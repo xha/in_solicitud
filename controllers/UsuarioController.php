@@ -80,7 +80,9 @@ class UsuarioController extends Controller
             return ActiveForm::validate($model);
         }
         
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->clave = md5("is".$model->clave);
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id_usuario]);
         } else {
             return $this->render('create', [
@@ -99,7 +101,9 @@ class UsuarioController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->clave = md5("is".$model->clave);
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id_usuario]);
         } else {
             return $this->render('update', [

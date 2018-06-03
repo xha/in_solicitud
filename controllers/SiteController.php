@@ -37,7 +37,7 @@ class SiteController extends Controller
                 'only' => ['site-index'],
                 'rules' => [
                     [
-                        'actions' => ['site-index'],
+                        'actions' => ['site-index','site-cambiar'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
